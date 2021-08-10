@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     public float spectatorMoveSpeed;
     private float rotX;
     private float rotY;
-    private bool isSpectator = true;
+    private bool isSpectator;
 
 
     // Start is called before the first frame update
@@ -52,6 +52,13 @@ public class CameraController : MonoBehaviour
         }
         else
         {
+            // rotate the camera vertically
+            transform.localRotation = Quaternion.Euler(-rotY, 0, 0);
+            // rotate the player horizontally
+            //      transform.parent.rotation = Quaternion.Euler(transform.rotation.x, rotX, 0);
+            transform.parent.rotation = Quaternion.Euler(0, rotX, 0);
+
+
         }
 
     }
