@@ -1101,8 +1101,8 @@ Transform:
   - {fileID: 1752360418}
   - {fileID: 1026112536}
   - {fileID: 143821140}
-  - {fileID: 2112745168}
   - {fileID: 1415456935}
+  - {fileID: 2112745168}
   - {fileID: 2045012328}
   - {fileID: 1690850303}
   - {fileID: 1779362396}
@@ -1113,14 +1113,14 @@ Transform:
   - {fileID: 144339902}
   - {fileID: 1278081111}
   - {fileID: 661338889}
+  - {fileID: 1577261840}
   - {fileID: 1697374709}
   - {fileID: 831982318}
+  - {fileID: 1940484332}
   - {fileID: 604015921}
   - {fileID: 1527714836}
-  - {fileID: 480075248}
-  - {fileID: 1577261840}
-  - {fileID: 1940484332}
   - {fileID: 4560131040577746155}
+  - {fileID: 480075248}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1888,6 +1888,7 @@ GameObject:
   - component: {fileID: 1793451436}
   - component: {fileID: 1793451435}
   - component: {fileID: 1793451434}
+  - component: {fileID: 1793451437}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1960,6 +1961,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1793451437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793451433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba489fc39489c204b9c4b0888e6df0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensX: 10
+  sensY: 10
+  minY: -90
+  maxY: 90
+  spectatorMoveSpeed: 10
 --- !u!1001 &1940484331
 PrefabInstance:
   m_ObjectHideFlags: 0
