@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 898383232545640795}
   - component: {fileID: 898383232545640772}
   - component: {fileID: 898383232545640799}
+  - component: {fileID: 6624106171064264388}
   - component: {fileID: 7660901878963278553}
   - component: {fileID: 6650347484351023049}
   m_Layer: 0
@@ -134,6 +135,31 @@ MonoBehaviour:
   jumpForce: 5
   rig: {fileID: 898383232545640772}
   id: 0
+  weapon: {fileID: 0}
+  curHp: 100
+  maxHp: 100
+  kills: 0
+  dead: 0
+  mr: {fileID: 0}
+--- !u!114 &6624106171064264388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898383232545640773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2e0bc089c41004a8f98246786ea53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  curAmmo: 0
+  maxAmmo: 0
+  bulletSpeed: 0
+  shootRate: 0
+  bulletPrefab: {fileID: 0}
+  bulletSpawnPos: {fileID: 0}
 --- !u!114 &7660901878963278553
 MonoBehaviour:
   m_ObjectHideFlags: 0

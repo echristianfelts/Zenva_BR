@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviourPun
     public int id;
     public Player photonPlayer;
 
+    public PlayerWeapon weapon;
+
     private int curAttackerId; // The player who attacked us last.
 
     public int curHp;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviourPun
 
     private bool flashingDamage;
     public MeshRenderer mr;
+
+   
 
     [PunRPC]
     public void Initialize(Player player)
@@ -61,6 +65,10 @@ public class PlayerController : MonoBehaviourPun
 
         if (Input.GetKeyDown(KeyCode.Space))
             TryJump();
+
+        if (Input.GetMouseButtonDown(0))
+            weapon.TryShoot();
+
     }
 
     void Move()
