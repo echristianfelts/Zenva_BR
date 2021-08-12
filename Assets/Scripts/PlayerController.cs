@@ -17,6 +17,16 @@ public class PlayerController : MonoBehaviourPun
     public int id;
     public Player photonPlayer;
 
+    private int curAttackerId; // The player who attacked us last.
+
+    public int curHp;
+    public int maxHp;
+    public int kills;
+    public bool dead;
+
+    private bool flashingDamage;
+    public MeshRenderer mr;
+
     [PunRPC]
     public void Initialize(Player player)
     {
@@ -42,6 +52,11 @@ public class PlayerController : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+
+        if (!photonView.IsMine || dead)
+            return;
+
+
         Move();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -68,4 +83,47 @@ public class PlayerController : MonoBehaviourPun
         if (Physics.Raycast(ray, 1.5f))
             rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
+
+    [PunRPC]
+    public void TakeDamage(int attackerId, int damage)
+    {
+        if (dead)
+            return;
+        curHp -= damage;
+        curAttackerId = attackerId;
+        // flash the player red
+        photonView.RPC("DamageFlash", RpcTarget.Others);
+        // update the health bar UI
+        // die if no health left
+        if (curHp <= 0)
+            photonView.RPC("Die", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void DamageFlash()
+    {
+        if (flashingDamage)
+            return;  // Safty check..!!!  Dont dothe thing if you are already doing the thing.
+
+        StartCoroutine(DamageFlashCoRoutine());
+        IEnumerator DamageFlashCoRoutine()
+        {
+            flashingDamage = true;
+            Color defaultColor = mr.material.color;
+            mr.material.color = Color.red;
+            yield return new WaitForSeconds(0.05f);
+            mr.material.color = defaultColor;
+            flashingDamage = false;
+        }
+    }
+
+    [PunRPC]
+    void Die()
+    {
+
+    }
+
+
+
 }
