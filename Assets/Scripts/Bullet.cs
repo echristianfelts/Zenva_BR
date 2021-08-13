@@ -21,13 +21,35 @@ public class Bullet : MonoBehaviour
 
         Destroy(gameObject, 5.0f);
     }
-
+    /*
     void OnTriggerEnter(Collider other)
     {
+        // did we hit a player?
+        // if this is the local player's bullet, damage the hit player
+        // we're using client side hit detection
         if (other.CompareTag("Player") && isMine)
         {
             PlayerController player = GameManager.instance.GetPlayer(other.gameObject);
+            if (player.id != attackerId)
+                player.photonView.RPC("TakeDamage", player.photonPlayer, attackerId, damage);
         }
+
+        Destroy(gameObject);
+    }
+    */
+    void OnCollisionEnter(Collision other)
+    {
+        // did we hit a player?
+        // if this is the local player's bullet, damage the hit player
+        // we're using client side hit detection
+        if (other.collider.tag =="Player" && isMine)
+        {
+            PlayerController player = GameManager.instance.GetPlayer(other.gameObject);
+            if (player.id != attackerId)
+                player.photonView.RPC("TakeDamage", player.photonPlayer, attackerId, damage);
+        }
+
+        Destroy(gameObject);
     }
 
 
