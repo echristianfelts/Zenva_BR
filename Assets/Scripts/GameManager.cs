@@ -8,6 +8,8 @@ using System.Linq; // more functions with rays?
 public class GameManager : MonoBehaviourPun
 {
 
+    public float postGameTime;
+
     [Header("Players")]
     public string playerPrefabLocation;
     public PlayerController[] players;
@@ -62,6 +64,26 @@ public class GameManager : MonoBehaviourPun
     public PlayerController GetPlayer(GameObject playerObj)
     {
         return players.First(x => x.gameObject == playerObj);
+    }
+
+    public void CheckWinCondition()
+    {
+        if(alivePlayers == 1)
+        {
+            photonView.RPC("WinGame", RpcTarget.All, players.First(x => !x.dead).id);
+        }
+    }
+
+    void WinGame(int winningPlayer)
+    {
+        // Set the UI win text.
+
+        Invoke("GoBackToMenu", postGameTime);
+    }
+
+    void GoBackToMenu()
+    {
+        NetworkManager.instance.ChangeScene("Menu");
     }
 
 

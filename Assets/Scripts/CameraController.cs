@@ -63,6 +63,13 @@ public class CameraController : MonoBehaviour
 
     }
 
+
+    public void SetAsSpectator()
+    {
+        isSpectator = true;
+        transform.parent = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
