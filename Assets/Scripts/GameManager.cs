@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviourPun
         }
     }
 
+    [PunRPC]
     void WinGame(int winningPlayer)
     {
         // Set the UI win text.

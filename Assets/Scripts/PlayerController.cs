@@ -145,13 +145,22 @@ public class PlayerController : MonoBehaviourPun
         {
             if (curAttackerId != 0)
                     GameManager.instance.GetPlayer(curAttackerId).photonView.RPC("AddKill", RpcTarget.All);
+
             // set the cam to spectator
             GetComponentInChildren<CameraController>().SetAsSpectator();
+
             // disable the physics and hide the player
             rig.isKinematic = true;
             transform.position = new Vector3(0, -50, 0);
         }
     }
+
+    [PunRPC]
+    public void AddKill()
+    {
+        kills++;
+    }
+
 
 
 
