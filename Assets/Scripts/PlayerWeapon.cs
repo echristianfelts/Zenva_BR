@@ -56,6 +56,14 @@ public class PlayerWeapon : MonoBehaviour
         bulletScript.rig.velocity = dir * bulletSpeed;
     }
 
+    [PunRPC]
+    public void GiveAmmo(int ammoToGive)
+    {
+        curAmmo = Mathf.Clamp(curAmmo + ammoToGive, 0, maxAmmo);
+
+        //Later: update the ammo text in UI
+    }
+
     // Start is called before the first frame update
     void Start()
     {

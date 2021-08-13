@@ -159,7 +159,16 @@ public class PlayerController : MonoBehaviourPun
     public void AddKill()
     {
         kills++;
+        //LATER: Update UI
     }
+
+    [PunRPC]
+    public void Heal(int amountToHeal)
+    {
+        curHp = Mathf.Clamp(curHp + amountToHeal, 0, maxHp); // Current HP + Amount to heal, capped at Max HP.
+        //Later: update the health bar UI
+    }
+
 
 
 
