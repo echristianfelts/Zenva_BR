@@ -62,7 +62,7 @@ public class ForceField : MonoBehaviour
             // loop through all players
             foreach (PlayerController player in GameManager.instance.players)
             {
-                if (player.dead || !player)
+                if (player.dead)// || !player)
                     continue;  // Jumps out of loop if player dead is true or if the player does not exist..?  (In case of weird stuff..)
                 if (Vector3.Distance(Vector3.zero, player.transform.position) >= transform.localScale.x)
                 {
