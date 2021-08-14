@@ -926,6 +926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324968823fb9ded4491ec52efd666acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 2063320429}
+  playerInfoText: {fileID: 1127813782}
+  ammoText: {fileID: 892359583}
+  winText: {fileID: 372865748}
+  winBackground: {fileID: 999369713}
 --- !u!1 &602095403
 GameObject:
   m_ObjectHideFlags: 0
