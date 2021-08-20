@@ -55,6 +55,25 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(sceneName);
     }
 
+    //Fixing Existin issues that occur When a player disconnects...
+
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        GameManager.instance.alivePlayers--;
+        GameUI.instance.UpdatePlayerInfoText();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameManager.instance.CheckWinCondition();
+        }
+    }
+
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        PhotonNetwork.LoadLevel("Menu");
+    }
+
 
     // Update is called once per frame
     void Update()

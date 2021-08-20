@@ -56,9 +56,23 @@ public class GameManager : MonoBehaviourPun
 
     }
 
+    //Fixing Existing issues that occur When a player disconnects...
+
+    //  old version
+    /*
     public PlayerController GetPlayer(int playerId)
     {
         return players.First(x => x.id == playerId);
+    }
+    */
+    public PlayerController GetPlayer(int playerId)
+    {
+        foreach (PlayerController player in players)
+        {
+            if (player != null && player.id == playerId)
+                return player;
+        }
+        return null;
     }
 
     public PlayerController GetPlayer(GameObject playerObj)
