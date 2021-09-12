@@ -14,8 +14,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else { }
+
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //  DontDestroyOnLoad(gameObject);
         Debug.Log("Network Manager.Awake..!!!");
 
     }
@@ -69,7 +76,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
 
-    public override void OnDisconnected(DisconnectCause)
+    public override void OnDisconnected(DisconnectCause cause)
     {
         PhotonNetwork.LoadLevel("Menu");
     }
